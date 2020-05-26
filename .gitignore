@@ -1,0 +1,14 @@
+.env
+
+# IDE stuff
+.idea/$CACHE_FILE$
+.idea/dataSources*
+.idea/rSettings.xml
+.idea/workspace.xml
+*.swp
+*.swo
+
+# others
+*.pyc
+env
+__pycache__

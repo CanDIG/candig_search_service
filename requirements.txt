@@ -1,0 +1,16 @@
+aiohttp==3.6.2
+async-timeout==3.0.1
+attrs==19.3.0
+certifi==2020.4.5.1
+cffi==1.14.0
+chardet==3.0.4
+idna==2.9
+lark-parser==0.8.5
+multidict==4.7.5
+pycparser==2.20
+pytz==2020.1
+requests==2.23.0
+tartiflette==1.2.1
+tartiflette-aiohttp==1.2.0
+urllib3==1.25.9
+yarl==1.4.2
