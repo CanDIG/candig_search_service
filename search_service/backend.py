@@ -2,8 +2,11 @@ import json
 import re
 import requests
 
+from search_service.config import METADATA_SERVICE_URL
+
 
 NON_METADATA_SUBQUERIES = [
+    # find the sampleUrls nested object, that is until the next }
     re.compile('sampleUrls[^}]*'),
 ]
 
@@ -13,7 +16,7 @@ async def sanitize_metadata_query(query):
     Since our GraphQL schema for this application cover multiple
     other graphQL schemas (or simply other data sources) we have
     to do some kind of manual schema stitching. The following is
-    fairly ugly but workable solution until we come up with a better
+    fairly ugly but workable fix until we come up with a better
     long term solution
     """
     for regex in NON_METADATA_SUBQUERIES:
@@ -27,7 +30,7 @@ async def sanitize_metadata_query(query):
 
 
 async def query_metadata_service(context, object_type):
-    url = 'http://127.0.0.1:8000/graphql'
+    url = f"{METADATA_SERVICE_URL}/graphql"
 
     json_query = await context['req'].json()
     cleaned_query = await sanitize_metadata_query(json_query['query'])

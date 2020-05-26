@@ -13,19 +13,7 @@ async def resolve_query_patients(
     ctx: Dict[str, Any],
     info: "ResolveInfo",
 ) -> List[Dict[str, Any]]:
-    """
-    Resolver in charge of returning all recipes.
-    :param parent: initial value filled in to the engine `execute` method
-    :param args: computed arguments related to the field
-    :param ctx: context filled in at engine initialization
-    :param info: information related to the execution and field resolution
-    :type parent: Optional[Any]
-    :type args: Dict[str, Any]
-    :type ctx: Dict[str, Any]
-    :type info: ResolveInfo
-    :return: the list of all recipes
-    :rtype: List[Dict[str, Any]]
-    """
+
     return await query_metadata_service(ctx, 'patients')
 
 
