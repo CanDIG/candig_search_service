@@ -2,7 +2,10 @@ import json
 import re
 import requests
 
-from search_service.config import METADATA_SERVICE_URL
+from search_service.config import (
+    HTSGET_SERVICE_URL,
+    METADATA_SERVICE_URL
+)
 
 
 NON_METADATA_SUBQUERIES = [
@@ -47,3 +50,16 @@ async def query_metadata_service(context, object_type):
             raise Exception(f'Could not find {object_type} in response from metadata service')
     else:
         raise Exception('Wrong format in response from metadata service')
+
+
+async def query_htsget_service(parent):
+    if 'sampleId' in parent:
+        url = f"{HTSGET_SERVICE_URL}/htsget/v1/variants?id={parent['sampleId']}"
+        res = requests.get(url)
+        
+        if res.status_code == 200:
+            return res.json()['htsget']['urls']
+        else:
+            return [{'url': None}]
+    else:
+        return [{'url': None}]

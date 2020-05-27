@@ -3,7 +3,10 @@ from typing import Any, Dict, List, Optional
 import requests
 from tartiflette import Resolver
 
-from search_service.backend import query_metadata_service
+from search_service.backend import (
+    query_htsget_service,
+    query_metadata_service
+)
 
 
 @Resolver("Query.patients")
@@ -28,18 +31,9 @@ async def resolve_query_samples(
     return await query_metadata_service(ctx, 'samples')
 
 
-@Resolver("Patient.samples")
-async def resolve_query_patients_samples(
-    parent: Optional[Dict[str, Any]],
-    args: Dict[str, Any],
-    ctx: Dict[str, Any],
-    info: "ResolveInfo",
-) -> Optional[List[Dict[str, Any]]]:
-
-    if 'samples' in parent:
-        return parent['samples']
-    else:
-        return None
+# Note: Nested objects provided by the metadata service do
+# no need any further resolving, thus it's moot to declare this:
+# @Resolver("Patient.samples")
 
 
 @Resolver("Sample.sampleUrls")
@@ -50,13 +44,4 @@ async def resolve_query_sample_sampleurls(
     info: "ResolveInfo",
 ) -> List[Dict[str, Any]]:
 
-    if 'sampleId' in parent:
-        url = f"http://0.0.0.0:3000/htsget/v1/variants?id={parent['sampleId']}"
-        res = requests.get(url)
-        
-        if res.status_code == 200:
-            return res.json()['htsget']['urls']
-        else:
-            return [{'url': None}]
-    else:
-        return [{'url': None}]
+    return await query_htsget_service(parent)
