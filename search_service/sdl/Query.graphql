@@ -41,10 +41,19 @@ type Patient {
   otherGeneticConditionOrSignificantComorbidityTier: Int
   occupationalOrEnvironmentalExposure: String
   occupationalOrEnvironmentalExposureTier: Int
-  samples: [Sample!]
   chemotherapies: [Chemotherapy!]
   complications: [Complication!]
   consents: [Consent!]
+  diagnoses: [Diagnosis!]
+  enrollments: [Enrollment!]
+  immunotherapies: [Immunotherapy!]
+  outcomes: [Outcome!]
+  samples: [Sample!]
+  slides: [Slide!]
+  studies: [Study!]
+  surgeries: [Surgery!]
+  treatments: [Treatment!]
+  tumourboards: [Tumourboard!]
 }
 
 type Chemotherapy {
@@ -160,71 +169,180 @@ type Consent {
   consentFormCompleteTier: Int
 }
 
-type DiagnosisType {
-  id: String!
-  attributes: String
-  created: String!
-  updated: String
-  name: String
-  description: String
-  patientId: String
-  patientIdTier: Int
-  diagnosisId: String
-  diagnosisIdTier: Int
-  diagnosisDate: String
-  diagnosisDateTier: Int
+type Diagnosis {
+  additionalMolecularDiagnosticTestingPerformed: String
+  additionalMolecularDiagnosticTestingPerformedTier: Int
+  additionalMolecularTesting: String
+  additionalMolecularTestingTier: Int
+  additionalTest: String
+  additionalTestTier: Int
+  additionalTestType: String
+  additionalTestTypeTier: Int
   ageAtDiagnosis: String
   ageAtDiagnosisTier: Int
+  attributes: String
+  biomarkerQuantification: String
+  biomarkerQuantificationTier: Int
+  cancerSite: String
+  cancerSiteTier: Int
+  cancerSpecificBiomarkers: String
+  cancerSpecificBiomarkersTier: Int
   cancerType: String
   cancerTypeTier: Int
   classification: String
   classificationTier: Int
-  cancerSite: String
-  cancerSiteTier: Int
-  histology: String
-  histologyTier: Int
-  methodOfDefinitiveDiagnosis: String
-  methodOfDefinitiveDiagnosisTier: Int
-  sampleType: String
-  sampleTypeTier: Int
-  sampleSite: String
-  sampleSiteTier: Int
-  tumorGrade: String
-  tumorGradeTier: Int
+  created: String
+  description: String
+  diagnosisDate: String
+  diagnosisDateTier: Int
+  diagnosisId: String
+  diagnosisIdTier: Int
   gradingSystemUsed: String
   gradingSystemUsedTier: Int
-  sitesOfMetastases: String
-  sitesOfMetastasesTier: Int
-  stagingSystem: String
-  stagingSystemTier: Int
-  versionOrEditionOfTheStagingSystem: String
-  versionOrEditionOfTheStagingSystemTier: Int
-  specificTumorStageAtDiagnosis: String
-  specificTumorStageAtDiagnosisTier: Int
-  prognosticBiomarkers: String
-  prognosticBiomarkersTier: Int
-  biomarkerQuantification: String
-  biomarkerQuantificationTier: Int
-  additionalMolecularTesting: String
-  additionalMolecularTestingTier: Int
-  additionalTestType: String
-  additionalTestTypeTier: Int
-  laboratoryName: String
-  laboratoryNameTier: Int
+  histology: String
+  histologyTier: Int
+  id: String
   laboratoryAddress: String
   laboratoryAddressTier: Int
+  laboratoryName: String
+  laboratoryNameTier: Int
+  methodOfDefinitiveDiagnosis: String
+  methodOfDefinitiveDiagnosisTier: Int
+  name: String
+  patient: Patient
+  patientIdTier: Int
+  prognosticBiomarkers: String
+  prognosticBiomarkersTier: Int
+  sampleSite: String
+  sampleSiteTier: Int
+  sampleType: String
+  sampleTypeTier: Int
   siteOfMetastases: String
   siteOfMetastasesTier: Int
-  stagingSystemVersion: String
-  stagingSystemVersionTier: Int
+  sitesOfMetastases: String
+  sitesOfMetastasesTier: Int
   specificStage: String
   specificStageTier: Int
-  cancerSpecificBiomarkers: String
-  cancerSpecificBiomarkersTier: Int
-  additionalMolecularDiagnosticTestingPerformed: String
-  additionalMolecularDiagnosticTestingPerformedTier: Int
-  additionalTest: String
-  additionalTestTier: Int
+  specificTumorStageAtDiagnosis: String
+  specificTumorStageAtDiagnosisTier: Int
+  stagingSystem: String
+  stagingSystemTier: Int
+  stagingSystemVersion: String
+  stagingSystemVersionTier: Int
+  tumorGrade: String
+  tumorGradeTier: Int
+  updated: String
+  versionOrEditionOfTheStagingSystem: String
+  versionOrEditionOfTheStagingSystemTier: Int
+}
+
+type Enrollment {
+  ageAtEnrollment: String
+  ageAtEnrollmentTier: Int
+  attributes: String
+  created: String
+  crossEnrollment: String
+  crossEnrollmentTier: Int
+  description: String
+  eligibilityCategory: String
+  eligibilityCategoryTier: Int
+  enrollmentApprovalDate: String
+  enrollmentApprovalDateTier: Int
+  enrollmentInstitution: String
+  enrollmentInstitutionTier: Int
+  id: String
+  name: String
+  otherPersonalizedMedicineStudyId: String
+  otherPersonalizedMedicineStudyIdTier: Int
+  otherPersonalizedMedicineStudyName: String
+  otherPersonalizedMedicineStudyNameTier: Int
+  patient: Patient
+  patientIdTier: Int
+  primaryOncologistContact: String
+  primaryOncologistContactTier: Int
+  primaryOncologistName: String
+  primaryOncologistNameTier: Int
+  referringPhysicianContact: String
+  referringPhysicianContactTier: Int
+  referringPhysicianName: String
+  referringPhysicianNameTier: Int
+  statusAtEnrollment: String
+  statusAtEnrollmentTier: Int
+  summaryOfIdRequest: String
+  summaryOfIdRequestTier: Int
+  treatingCentreName: String
+  treatingCentreNameTier: Int
+  treatingCentreProvince: String
+  treatingCentreProvinceTier: Int
+  updated: String
+}
+
+type Immunotherapy {
+  attributes: String
+  courseNumber: String
+  courseNumberTier: Int
+  created: String
+  description: String
+  id: String
+  immunotherapyDetail: String
+  immunotherapyDetailTier: Int
+  immunotherapyTarget: String
+  immunotherapyTargetTier: Int
+  immunotherapyType: String
+  immunotherapyTypeTier: Int
+  name: String
+  patient: Patient
+  patientIdTier: Int
+  startDate: String
+  startDateTier: Int
+  treatmentPlanId: String
+  treatmentPlanIdTier: Int
+  updated: String
+}
+
+type Outcome {
+  attributes: String
+  created: String
+  dateOfAssessment: String
+  dateOfAssessmentTier: Int
+  description: String
+  diseaseFreeSurvivalInMonths: String
+  diseaseFreeSurvivalInMonthsTier: Int
+  diseaseResponseOrStatus: String
+  diseaseResponseOrStatusTier: Int
+  height: String
+  heightTier: Int
+  heightUnits: String
+  heightUnitsTier: Int
+  id: String
+  methodOfResponseEvaluation: String
+  methodOfResponseEvaluationTier: Int
+  minimalResidualDiseaseAssessment: String
+  minimalResidualDiseaseAssessmentTier: Int
+  name: String
+  otherResponseClassification: String
+  otherResponseClassificationTier: Int
+  overallSurvivalInMonths: String
+  overallSurvivalInMonthsTier: Int
+  patient: Patient
+  patientIdTier: Int
+  performanceStatus: String
+  performanceStatusTier: Int
+  physicalExamId: String
+  physicalExamIdTier: Int
+  responseCriteriaUsed: String
+  responseCriteriaUsedTier: Int
+  sitesOfAnyProgressionOrRecurrence: String
+  sitesOfAnyProgressionOrRecurrenceTier: Int
+  summaryStage: String
+  summaryStageTier: Int
+  updated: String
+  vitalStatus: String
+  vitalStatusTier: Int
+  weight: String
+  weightTier: Int
+  weightUnits: String
+  weightUnitsTier: Int
 }
 
 type Sample {
@@ -294,10 +412,284 @@ type SampleUrl {
   url: String
 }
 
+type Radiotherapy {
+  adjacentFields: String
+  adjacentFieldsTier: Int
+  adjacentFractions: String
+  adjacentFractionsTier: Int
+  attributes: String
+  baseline: String
+  baselineTier: Int
+  boostDose: String
+  boostDoseTier: Int
+  boostSite: String
+  boostSiteTier: Int
+  brachytherapyDose: String
+  brachytherapyDoseTier: Int
+  complete: String
+  completeTier: Int
+  courseNumber: String
+  courseNumberTier: Int
+  created: String
+  description: String
+  id: String
+  name: String
+  patient: Patient
+  patientIdTier: Int
+  radiationSite: String
+  radiationSiteTier: Int
+  radiationType: String
+  radiationTypeTier: Int
+  radiotherapyDose: String
+  radiotherapyDoseTier: Int
+  recordingDate: String
+  recordingDateTier: Int
+  siteNumber: String
+  siteNumberTier: Int
+  startDate: String
+  startDateTier: Int
+  startIntervalRad: String
+  startIntervalRadRaw: String
+  startIntervalRadRawTier: Int
+  startIntervalRadTier: Int
+  stopDate: String
+  stopDateTier: Int
+  technique: String
+  techniqueTier: Int
+  testResult: String
+  testResultStd: String
+  testResultStdTier: Int
+  testResultTier: Int
+  therapeuticModality: String
+  therapeuticModalityTier: Int
+  totalDose: String
+  totalDoseTier: Int
+  treatedRegion: String
+  treatedRegionTier: Int
+  treatingCentreName: String
+  treatingCentreNameTier: Int
+  treatmentPlanId: String
+  treatmentPlanIdTier: Int
+  updated: String
+}
+
+type Slide {
+  attributes: String
+  created: String
+  description: String
+  eosinophilInfiltrationPercent: String
+  eosinophilInfiltrationPercentTier: Int
+  granulocyteInfiltrationPercent: String
+  granulocyteInfiltrationPercentTier: Int
+  id: String
+  inflammatoryInfiltrationPercent: String
+  inflammatoryInfiltrationPercentTier: Int
+  lymphocyteInfiltrationPercent: String
+  lymphocyteInfiltrationPercentTier: Int
+  monocyteInfiltrationPercent: String
+  monocyteInfiltrationPercentTier: Int
+  name: String
+  necrosisPercent: String
+  necrosisPercentTier: Int
+  neutrophilInfiltrationPercent: String
+  neutrophilInfiltrationPercentTier: Int
+  normalCellsPercent: String
+  normalCellsPercentTier: Int
+  patient: Patient
+  patientIdTier: Int
+  proliferatingCellsNumber: String
+  proliferatingCellsNumberTier: Int
+  sampleId: String
+  sampleIdTier: Int
+  sectionLocation: String
+  sectionLocationTier: Int
+  slideId: String
+  slideIdTier: Int
+  slideOtherId: String
+  slideOtherIdTier: Int
+  stromalCellsPercent: String
+  stromalCellsPercentTier: Int
+  tumorCellsPercent: String
+  tumorCellsPercentTier: Int
+  tumorNucleiPercent: String
+  tumorNucleiPercentTier: Int
+  updated: String
+}
+
+type Study {
+  attributes: String
+  created: String
+  description: String
+  endDate: String
+  endDateTier: Int
+  id: String
+  name: String
+  patient: Patient
+  patientIdTier: Int
+  recordingDate: String
+  recordingDateTier: Int
+  startDate: String
+  startDateTier: Int
+  status: String
+  statusTier: Int
+  updated: String
+}
+
+type Surgery {
+  attributes: String
+  collectionTimePoint: String
+  collectionTimePointTier: Int
+  courseNumber: String
+  courseNumberTier: Int
+  created: String
+  description: String
+  diagnosisDate: String
+  diagnosisDateTier: Int
+  id: String
+  name: String
+  patient: Patient
+  patientIdTier: Int
+  recordingDate: String
+  recordingDateTier: Int
+  sampleId: Sample
+  sampleIdTier: Int
+  site: String
+  siteTier: Int
+  startDate: String
+  startDateTier: Int
+  stopDate: String
+  stopDateTier: Int
+  treatmentPlanId: String
+  treatmentPlanIdTier: Int
+  type: String
+  typeTier: Int
+  updated: String
+}
+
+type Treatment {
+  attributes: String
+  courseNumber: String
+  courseNumberTier: Int
+  created: String
+  dateOfRecurrenceOrProgressionAfterThisTreatment: String
+  dateOfRecurrenceOrProgressionAfterThisTreatmentTier: Int
+  description: String
+  diagnosisId: String
+  diagnosisIdTier: Int
+  drugIdNumbers: String
+  drugIdNumbersTier: Int
+  id: String
+  name: String
+  patient: Patient
+  patientIdTier: Int
+  reasonForEndingTheTreatment: String
+  reasonForEndingTheTreatmentTier: Int
+  responseCriteriaUsed: String
+  responseCriteriaUsedTier: Int
+  responseToTreatment: String
+  responseToTreatmentTier: Int
+  startDate: String
+  startDateTier: Int
+  stopDate: String
+  stopDateTier: Int
+  systematicTherapyAgentName: String
+  systematicTherapyAgentNameTier: Int
+  therapeuticModality: String
+  therapeuticModalityTier: Int
+  treatmentIntent: String
+  treatmentIntentTier: Int
+  treatmentPlanId: String
+  treatmentPlanIdTier: Int
+  treatmentPlanType: String
+  treatmentPlanTypeTier: Int
+  unexpectedOrUnusualToxicityDuringTreatment: String
+  unexpectedOrUnusualToxicityDuringTreatmentTier: Int
+  updated: String
+}
+
+type Tumourboard {
+  actionableTargetFound: String
+  actionableTargetFoundTier: Int
+  agentOrDrugClass: String
+  agentOrDrugClassTier: Int
+  analysesDiscussed: String
+  analysesDiscussedTier: Int
+  attributes: String
+  classificationOfVariants: String
+  classificationOfVariantsTier: Int
+  clinicalValidationProgress: String
+  clinicalValidationProgressTier: Int
+  cnvsDiscussed: String
+  cnvsDiscussedTier: Int
+  created: String
+  dateOfMolecularTumorBoard: String
+  dateOfMolecularTumorBoardTier: Int
+  description: String
+  detailsOfTreatmentPlanImpact: String
+  detailsOfTreatmentPlanImpactTier: Int
+  didTreatmentPlanChangeBasedOnProfilingResult: String
+  didTreatmentPlanChangeBasedOnProfilingResultTier: Int
+  diseaseExpressionComparator: String
+  diseaseExpressionComparatorTier: Int
+  germlineDnaSampleId: String
+  germlineDnaSampleIdTier: Int
+  germlineSnvDiscussed: String
+  germlineSnvDiscussedTier: Int
+  hasAGermlineVariantBeenIdentifiedByProfilingThatMayPredisposeToCancer: String
+  hasAGermlineVariantBeenIdentifiedByProfilingThatMayPredisposeToCancerTier: Int
+  howTreatmentHasAlteredBasedOnProfiling: String
+  howTreatmentHasAlteredBasedOnProfilingTier: Int
+  id: String
+  levelOfEvidenceForExpressionTargetAgentMatch: String
+  levelOfEvidenceForExpressionTargetAgentMatchTier: Int
+  molecularTumorBoardRecommendation: String
+  molecularTumorBoardRecommendationTier: Int
+  name: String
+  normalExpressionComparator: String
+  normalExpressionComparatorTier: Int
+  patientHasBeenReferredToAHereditaryCancerProgramBasedOnThisMolecularProfiling: String
+  patientHasBeenReferredToAHereditaryCancerProgramBasedOnThisMolecularProfilingTier: Int
+  patientId: String
+  patientIdTier: Int
+  patientOrFamilyInformedOfGermlineVariant: String
+  patientOrFamilyInformedOfGermlineVariantTier: Int
+  reasonTreatmentPlanDidNotChangeBasedOnProfiling: String
+  reasonTreatmentPlanDidNotChangeBasedOnProfilingTier: Int
+  somaticSampleType: String
+  somaticSampleTypeTier: Int
+  somaticSnvDiscussed: String
+  somaticSnvDiscussedTier: Int
+  structuralVariantDiscussed: String
+  structuralVariantDiscussedTier: Int
+  summaryReport: String
+  summaryReportTier: Int
+  tumorDnaSampleId: String
+  tumorDnaSampleIdTier: Int
+  tumorRnaSampleId: String
+  tumorRnaSampleIdTier: Int
+  typeOfSampleAnalyzed: String
+  typeOfSampleAnalyzedTier: Int
+  typeOfTumourSampleAnalyzed: String
+  typeOfTumourSampleAnalyzedTier: Int
+  typeOfValidation: String
+  typeOfValidationTier: Int
+  updated: String
+}
+
 type Query {
   chemotherapies: [Chemotherapy!]
   complications: [Complication!]
   consents: [Consent!]
+  diagnoses: [Diagnosis!]
+  enrollments: [Enrollment!]
+  immunotherapies: [Immunotherapy!]
   patients(patientId: String, gender: String, name_Icontains: String, name_Iexact: String, id: ID): [Patient!]
+  outcomes: [Outcome!]
   samples(sampleId: String, sampleType_Icontains: String, sampleType_Iexact: String, id: ID): [Sample!]
+  radiotherapies: [Radiotherapy!]
+  slides: [Slide!]
+  studies: [Study!]
+  surgeries: [Surgery!]
+  treatments: [Treatment!]
+  tumourboards: [Tumourboard!]
 }
